@@ -1,0 +1,88 @@
+.timestamp {
+    float: left;
+    font-size: 9px;
+}
+
+.duration {
+    float: right;
+    font-size: 9px;
+}
+
+div.task-header {
+    border: 0;
+}
+
+div.task-details {
+    border: 0;
+    height: 20px;
+}
+
+div.task-manual {
+    float: right;
+    content: url("play.png");
+}
+
+div.task-rebuild {
+    float: right;
+    content: url("refresh.png");
+}
+
+div.task-progress-notrunning {
+    display: none;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.3
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.alert.alert-queued {
+    background-color: #ff5722;
+    color: rgba(255,255,255, 0.84);
+}
+.alert.alert-queued a,
+.alert.alert-queued .alert-link {
+    color: rgba(255, 255, 255, 0.84);
+}
+
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0;
+    }
+    to {
+        background-position: 0 0;
+    }
+}
+
+@keyframes slidein {
+    from {
+        transform:  translate(0, 0) scale(2,1);
+        -webkit-transform: translate(0, 0) scale(2,1);
+        -o-transform: translate(0, 0) scale(2,1);
+        -moz-transform: translate(0, 0) scale(2,1);
+    }
+
+    100% {
+        transform: translate(100px, 0) scale(1);
+        -webkit-transform: translate(100px, 0) scale(1);
+        -o-transform: translate(100px, 0) scale(1);
+        -moz-transform: translate(100px, 0) scale(1);
+    }
+}
+
+.progress-striped .progress-bar,
+.progress-bar-striped {
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    -webkit-background-size: 40px 40px;
+    background-size: 40px 40px;
+}
+
+.progress-bar.active, .progress.active .progress-bar {
+    animation: slidein 1s linear infinite;
+}

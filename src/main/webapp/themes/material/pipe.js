@@ -3,6 +3,9 @@ function setupRetry(timeout) {
 }
 
 function setupTheme(theme) {
+    if(theme === 'material'){
+        Q.material.init()
+    }
 }
 
 function pipelineUtils() {
@@ -76,9 +79,9 @@ function pipelineUtils() {
                 }
                 html.push("</h1>");
                 if (!showAvatars) {
-                    html.push("<div class='pagination'>");
+                    html.push("<ul class='pagination pagination-lg'>");
                     html.push(component.pagingData);
-                    html.push("</div>");
+                    html.push("</ul>");
                 }
                 if (component.pipelines.length === 0) {
                     html.push("No builds done yet.");
@@ -129,30 +132,30 @@ function pipelineUtils() {
                         }
                     }
 
-                    html.push('<section class="pipeline">');
+                    html.push('<section class="pipeline container-fluid">');
 
                     var row = 0, column = 0, stage;
 
-                    html.push('<div class="pipeline-row">');
+                    html.push('<div class="pipeline-row row">');
 
                     for (var j = 0; j < pipeline.stages.length; j++) {
                         stage = pipeline.stages[j];
                         if (stage.row > row) {
-                            html.push('</div><div class="pipeline-row">');
+                            html.push('</div><div class="pipeline-row row">');
                             column = 0;
                             row++;
                         }
 
                         if (stage.column > column) {
                             for (var as = column; as < stage.column; as++) {
-                                html.push('<div class="pipeline-cell"><div class="stage hide"></div></div>');
+                                html.push('<div class="pipeline-cell col-md-4"><div class="stage hide"></div></div>');
                                 column++;
                             }
                         }
 
-                        html.push('<div class="pipeline-cell">');
-                        html.push('<div id="' + getStageId(stage.id + "", i) + '" class="stage ' + getStageClassName(stage.name) + '">');
-                        html.push('<div class="stage-header"><div class="stage-name">' + htmlEncode(stage.name) + '</div>');
+                        html.push('<div class="pipeline-cell col-md-4">');
+                        html.push('<div id="' + getStageId(stage.id + "", i) + '" class="stage well ' + getStageClassName(stage.name) + '">');
+                        html.push('<div class="stage-header"><h2 class="stage-name">' + htmlEncode(stage.name) + '</h2>');
                         if (!pipeline.aggregated) {
                             html.push('</div>');
                         } else {
@@ -182,9 +185,10 @@ function pipelineUtils() {
                                 progressClass = "task-progress-running";
                             }
 
-                            html.push("<div id=\"" + id + "\" class=\"status stage-task " + task.status.type +
-                                "\"><div class=\"task-progress " + progressClass + "\" style=\"width: " + progress + "%;\"><div class=\"task-content\">" +
-                                "<div class=\"task-header\"><div class=\"taskname\"><a href=\"" + getLink(data, task.link) + "\">" + htmlEncode(task.name) + "</a></div>");
+                            html.push("<div id=\"" + id + "\" class=\"status stage-task " + task.status.type + " panel\">" +
+                                "<div class=\"progress progress-striped active " + progressClass + "\"><div class=\"progress-bar \" style=\"height: 100%;  width: " + progress + "%;\" ></div></div>" +
+                                "<div class=\"task-content alert alert-dismissible alert-"+ task.status.type.toLowerCase() +"\">" +
+                                "<div class=\"task-header \"><div class=\"taskname \"><a href=\"" + getLink(data, task.link) + "\">" + htmlEncode(task.name) + "</a>");
                             if (data.allowManualTriggers && task.manual && task.manualStep.enabled && task.manualStep.permission) {
                                 html.push('<div class="task-manual" id="manual-' + id + '" title="Trigger manual build" onclick="triggerManual(\'' + id + '\', \'' + task.id + '\', \'' + task.manualStep.upstreamProject + '\', \'' + task.manualStep.upstreamId + '\');">');
                                 html.push("</div>");
@@ -248,7 +252,7 @@ function pipelineUtils() {
                                 plumb.connect({
                                     source: source,
                                     target: target,
-                                    anchors: [[1, 0, 1, 0, 0, 37], [0, 0, -1, 0, 0, 37]], // allow boxes to increase in height but keep anchor lines on the top
+                                    anchors: [[1, 0, 1, 0, 30, 40], [1, 0, -1, 0, 30, 40]], // allow boxes to increase in height but keep anchor lines on the top
                                     overlays: [
                                         [ "Arrow", { location: 1, foldback: 0.9, width: 12, length: 12}]
                                     ],

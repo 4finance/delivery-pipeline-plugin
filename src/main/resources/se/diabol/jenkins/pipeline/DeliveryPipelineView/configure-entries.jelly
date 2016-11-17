@@ -98,6 +98,7 @@
                 <option value="default" selected="${instance.getTheme().equals('default')? 'true':null}">Default</option>
                 <option value="contrast" selected="${instance.getTheme().equals('contrast')? 'true':null}">Contrast</option>
                 <option value="overview" selected="${instance.getTheme().equals('overview')? 'true':null}">Overview</option>
+                <option value="material" selected="${instance.getTheme().equals('material')? 'true':null}">Material</option>
             </select>
         </f:entry>
 
