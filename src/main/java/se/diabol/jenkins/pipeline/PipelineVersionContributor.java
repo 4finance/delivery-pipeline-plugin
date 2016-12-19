@@ -112,8 +112,8 @@ public class PipelineVersionContributor extends BuildWrapper {
         ParameterValue value = new StringParameterValue(PipelineVersionContributor.VERSION_PARAMETER, version);
         ParametersAction action = build.getAction(ParametersAction.class);
         if (action != null) {
-            action.merge(new ParametersAction(value));
-            return action;
+
+            return action.merge(new ParametersAction(value));
         }
         return new ParametersAction(value);
     }
