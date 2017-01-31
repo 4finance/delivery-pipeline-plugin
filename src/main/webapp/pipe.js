@@ -222,8 +222,13 @@ function pipelineUtils() {
                                        html.push("</section>");
 
                                    }
-
+                                   if (!showAvatars) {
+                                       html.push("<div class='pagination'>");
+                                       html.push(component.pagingData);
+                                       html.push("</div>");
+                                   }
                                    html.push("</section>");
+
                                    Q("#" + divNames[c % divNames.length]).append(html.join(""));
                                    Q("#pipeline-message-" + pipelineid).html('');
                                }
