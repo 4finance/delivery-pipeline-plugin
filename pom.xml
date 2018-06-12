@@ -40,7 +40,9 @@
     </distributionManagement>
 
     <properties>
-        <selenium.version>2.53.0</selenium.version>
+        <java.level>8</java.level>
+        <selenium.version>2.53.1</selenium.version>
+        <findbugs.failOnError>false</findbugs.failOnError>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>

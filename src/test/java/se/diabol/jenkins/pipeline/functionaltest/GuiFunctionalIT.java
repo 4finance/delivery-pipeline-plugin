@@ -32,7 +32,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.jvnet.hudson.test.JenkinsRule;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import se.diabol.jenkins.pipeline.DeliveryPipelineView;
 
 import javax.xml.transform.stream.StreamSource;
@@ -52,7 +52,7 @@ public class GuiFunctionalIT {
 
     @Before
     public void before() {
-        webDriver = new FirefoxDriver();
+        webDriver = new ChromeDriver();
     }
 
     @After
